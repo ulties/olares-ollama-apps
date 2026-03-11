@@ -35,10 +35,21 @@ Each app uses the Olares **shared app** pattern:
 Ollama downloads the model **automatically on first use**. There is no separate download step:
 
 1. On first request, the `harveyff-olares-ollama` API sidecar sends a pull request to the Ollama server (`http://localhost:11434`).
-2. Ollama streams the model from the [Ollama Library](https://ollama.com/library) and stores it in the persistent volume at `~/Ollama/<release-name>` (mapped to `/root/.ollama` inside the container).
+2. Ollama streams the model and stores it in the persistent volume at `~/Ollama/<release-name>` (mapped to `/root/.ollama` inside the container).
 3. Subsequent requests are served directly from the cached model on disk.
 
 The model directory is a `hostPath` volume so the model survives pod restarts without re-downloading.
+
+#### Ollama Library models
+
+Apps whose model ID does **not** start with `hf.co/` (e.g. `qwen3:1.7b-q4_K_M`) are pulled directly from the [Ollama Library](https://ollama.com/library). No authentication is required.
+
+#### Hugging Face-hosted models
+
+Apps whose model ID starts with **`hf.co/`** (e.g. `hf.co/Kijai/flux-fp8`, `hf.co/dropbox-dash/faster-whisper-large-v3-turbo`, `hf.co/onnx-community/Kokoro-82M-v1.0-ONNX`, `hf.co/Wan-AI/Wan2.1-T2V-1.3B`, `hf.co/tencent/Hunyuan3D-2mini`) are downloaded from [Hugging Face](https://huggingface.co/) rather than ollama.com/library.
+
+- **Public repositories** are downloaded without any credentials.
+- **Gated or private repositories** require a [Hugging Face access token](https://huggingface.co/settings/tokens). Set the token as the `OLLAMA_MODELS_HF_TOKEN` environment variable on the Ollama server before pulling, or follow the [Ollama Hugging Face guide](https://ollama.com/blog/hugging-face) for authentication details.
 
 ### GPU Acceleration
 
