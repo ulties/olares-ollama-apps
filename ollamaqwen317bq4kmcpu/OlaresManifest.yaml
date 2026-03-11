@@ -52,11 +52,11 @@ spec:
       url: https://ollama.com/library/qwen3
 
   {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
-  limitedCpu: 5000m
+  limitedCpu: 4500m
   requiredCpu: 100m
   requiredDisk: 50Mi
   limitedDisk: 50Gi
-  limitedMemory: 6Gi
+  limitedMemory: 7Gi
   requiredMemory: 3Gi
   {{- else }}
   requiredMemory: 64Mi
