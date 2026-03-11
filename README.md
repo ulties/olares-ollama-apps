@@ -46,7 +46,13 @@ Apps whose model ID does **not** start with `hf.co/` (e.g. `qwen3:1.7b-q4_K_M`) 
 
 #### Hugging Face-hosted models
 
-Apps whose model ID starts with **`hf.co/`** (e.g. `hf.co/Kijai/flux-fp8`, `hf.co/dropbox-dash/faster-whisper-large-v3-turbo`, `hf.co/onnx-community/Kokoro-82M-v1.0-ONNX`, `hf.co/Wan-AI/Wan2.1-T2V-1.3B`, `hf.co/tencent/Hunyuan3D-2mini`) are downloaded from [Hugging Face](https://huggingface.co/) rather than ollama.com/library.
+Apps whose model ID starts with **`hf.co/`** are downloaded from [Hugging Face](https://huggingface.co/) rather than ollama.com/library. The affected apps in this repo are:
+
+- `hf.co/Kijai/flux-fp8:flux1-schnell-fp8-e4m3fn.safetensors`
+- `hf.co/dropbox-dash/faster-whisper-large-v3-turbo`
+- `hf.co/onnx-community/Kokoro-82M-v1.0-ONNX`
+- `hf.co/Wan-AI/Wan2.1-T2V-1.3B`
+- `hf.co/tencent/Hunyuan3D-2mini:hunyuan3d-dit-v2-mini-fast`
 
 - **Public repositories** are downloaded without any credentials.
 - **Gated or private repositories** require a [Hugging Face access token](https://huggingface.co/settings/tokens). Set the token as the `OLLAMA_MODELS_HF_TOKEN` environment variable on the Ollama server before pulling, or follow the [Ollama Hugging Face guide](https://ollama.com/blog/hugging-face) for authentication details.
