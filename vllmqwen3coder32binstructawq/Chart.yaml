@@ -1,6 +1,0 @@
-apiVersion: v2
-appVersion: 'Qwen/Qwen3-Coder-32B-Instruct-AWQ'
-description: Helm chart for Qwen3-Coder 32B model serving with vLLM
-name: vllmqwen3coder32binstructawq
-type: application
-version: '1.0.0'
