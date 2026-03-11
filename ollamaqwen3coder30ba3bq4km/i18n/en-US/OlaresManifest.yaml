@@ -8,7 +8,7 @@ spec:
     This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
 
     ## MODEL OVERVIEW ##
-    Qwen3-Coder 30B A3B Instruct Q4_K_M is a coding-focused mixture-of-experts large language model from Alibaba's Qwen3 series, served via Ollama. This is the 30-billion-parameter MoE variant with only 3 billion active parameters per token, combined with Q4_K_M (4-bit, K-quant medium) quantization, delivering an exceptional balance of model quality and GPU memory efficiency — purpose-built for a 24 GB VRAM GPU.
+    Qwen3-Coder 30B A3B Instruct Q4_K_M is a coding-focused mixture-of-experts large language model from Alibaba's Qwen3 series, served via Ollama. This is the 30-billion-parameter MoE variant with only 3 billion active parameters per token, combined with Q4_K_M (4-bit, K-quant medium) quantization, delivering an exceptional balance of model quality and GPU memory efficiency.
 
     Model tag: qwen3-coder:30b-a3b-instruct-q4_K_M
     Quantization: Q4_K_M (4-bit, medium K-quant)
