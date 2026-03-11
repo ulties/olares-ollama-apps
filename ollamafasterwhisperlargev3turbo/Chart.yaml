@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 'hf.co/dropbox-dash/faster-whisper-large-v3-turbo'
+description: Helm chart for faster-whisper-large-v3-turbo speech recognition model serving with Ollama
+name: ollamafasterwhisperlargev3turbo
+type: application
+version: '1.0.0'

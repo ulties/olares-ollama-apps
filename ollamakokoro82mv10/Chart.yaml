@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 'hf.co/onnx-community/Kokoro-82M-v1.0-ONNX'
+description: Helm chart for Kokoro-82M-v1.0 text-to-speech model serving with Ollama
+name: ollamakokoro82mv10
+type: application
+version: '1.0.0'

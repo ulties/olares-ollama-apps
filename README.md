@@ -9,6 +9,14 @@ This repository contains Olares app configurations for models served via **Ollam
 | App folder | Model | Quantization |
 |------------|-------|--------------|
 | [`ollamaqwen3coder32bq4km`](./ollamaqwen3coder32bq4km) | `qwen3-coder:32b-q4_K_M` | Q4_K_M |
+| [`ollamaqwen3coder30ba3bq4km`](./ollamaqwen3coder30ba3bq4km) | `qwen3-coder:30b-a3b-instruct-q4_K_M` | Q4_K_M |
+| [`ollamaqwen317bq4km`](./ollamaqwen317bq4km) | `qwen3:1.7b-q4_K_M` | Q4_K_M |
+| [`ollamaqwen306bq4km`](./ollamaqwen306bq4km) | `qwen3:0.6b-q4_K_M` | Q4_K_M |
+| [`ollamaflux1schnellfp8`](./ollamaflux1schnellfp8) | `hf.co/Kijai/flux-fp8:flux1-schnell-fp8-e4m3fn.safetensors` | FP8 |
+| [`ollamafasterwhisperlargev3turbo`](./ollamafasterwhisperlargev3turbo) | `hf.co/dropbox-dash/faster-whisper-large-v3-turbo` | — |
+| [`ollamakokoro82mv10`](./ollamakokoro82mv10) | `hf.co/onnx-community/Kokoro-82M-v1.0-ONNX` | ONNX |
+| [`ollamawan21t2v13b`](./ollamawan21t2v13b) | `hf.co/Wan-AI/Wan2.1-T2V-1.3B` | — |
+| [`ollamahunyuan3d2minifast`](./ollamahunyuan3d2minifast) | `hf.co/tencent/Hunyuan3D-2mini:hunyuan3d-dit-v2-mini-fast` | — |
 
 ---
 
@@ -27,10 +35,27 @@ Each app uses the Olares **shared app** pattern:
 Ollama downloads the model **automatically on first use**. There is no separate download step:
 
 1. On first request, the `harveyff-olares-ollama` API sidecar sends a pull request to the Ollama server (`http://localhost:11434`).
-2. Ollama streams the model from the [Ollama Library](https://ollama.com/library) and stores it in the persistent volume at `~/Ollama/<release-name>` (mapped to `/root/.ollama` inside the container).
+2. Ollama streams the model and stores it in the persistent volume at `~/Ollama/<release-name>` (mapped to `/root/.ollama` inside the container).
 3. Subsequent requests are served directly from the cached model on disk.
 
 The model directory is a `hostPath` volume so the model survives pod restarts without re-downloading.
+
+#### Ollama Library models
+
+Apps whose model ID does **not** start with `hf.co/` (e.g. `qwen3:1.7b-q4_K_M`) are pulled directly from the [Ollama Library](https://ollama.com/library). No authentication is required.
+
+#### Hugging Face-hosted models
+
+Apps whose model ID starts with **`hf.co/`** are downloaded from [Hugging Face](https://huggingface.co/) rather than ollama.com/library. The affected apps in this repo are:
+
+- `hf.co/Kijai/flux-fp8:flux1-schnell-fp8-e4m3fn.safetensors`
+- `hf.co/dropbox-dash/faster-whisper-large-v3-turbo`
+- `hf.co/onnx-community/Kokoro-82M-v1.0-ONNX`
+- `hf.co/Wan-AI/Wan2.1-T2V-1.3B`
+- `hf.co/tencent/Hunyuan3D-2mini:hunyuan3d-dit-v2-mini-fast`
+
+- **Public repositories** are downloaded without any credentials.
+- **Gated or private repositories** require a [Hugging Face access token](https://huggingface.co/settings/tokens). Set the token as the `OLLAMA_MODELS_HF_TOKEN` environment variable on the Ollama server before pulling, or follow the [Ollama Hugging Face guide](https://ollama.com/blog/hugging-face) for authentication details.
 
 ### GPU Acceleration
 

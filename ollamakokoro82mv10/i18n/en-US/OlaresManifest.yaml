@@ -1,0 +1,26 @@
+metadata:
+  title: Kokoro 82M v1.0 ONNX (Ollama)
+  description: Kokoro-82M-v1.0-ONNX text-to-speech model from onnx-community served via Ollama — a lightweight 82M parameter TTS model with natural-sounding synthesis.
+
+spec:
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Kokoro-82M-v1.0-ONNX is a lightweight text-to-speech model with only 82 million parameters, converted to ONNX format by onnx-community for efficient inference. Served via Ollama, it provides high-quality speech synthesis with minimal resource requirements.
+
+    Model tag: hf.co/onnx-community/Kokoro-82M-v1.0-ONNX
+    Type: Text-to-speech (TTS)
+    Parameters: 82 million
+    Format: ONNX
+    Serving framework: Ollama
+
+    Key features:
+    Compact 82M parameter TTS model delivering natural-sounding speech synthesis.
+
+    ONNX format enables fast, cross-platform inference with hardware acceleration.
+
+    Multiple voice styles and speaking speeds supported.
+
+    Low VRAM footprint makes it ideal for sharing GPU resources across multiple services.

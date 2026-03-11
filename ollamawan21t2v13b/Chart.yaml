@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 'hf.co/Wan-AI/Wan2.1-T2V-1.3B'
+description: Helm chart for Wan2.1-T2V-1.3B text-to-video model serving with Ollama
+name: ollamawan21t2v13b
+type: application
+version: '1.0.0'

@@ -1,0 +1,25 @@
+metadata:
+  title: Qwen3 1.7B Q4_K_M (Ollama)
+  description: Qwen3 1.7B Q4_K_M served via Ollama — Alibaba's compact Qwen3 LLM with 1.7 billion parameters and 4-bit Q4_K_M quantization.
+
+spec:
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Qwen3 1.7B Q4_K_M is a compact large language model from Alibaba's Qwen3 series, served via Ollama. This is the 1.7-billion-parameter variant with Q4_K_M (4-bit, K-quant medium) quantization, offering fast inference with minimal VRAM requirements.
+
+    Model tag: qwen3:1.7b-q4_K_M
+    Quantization: Q4_K_M (4-bit, medium K-quant)
+    Parameters: 1.7 billion
+    Serving framework: Ollama
+
+    Key features:
+    Fast and lightweight general-purpose language model suitable for devices with limited VRAM.
+
+    Supports thinking mode (for complex reasoning) and non-thinking mode (for fast responses).
+
+    OpenAI-compatible API endpoint for seamless integration with existing tools and workflows.
+
+    Built on the Qwen3 architecture with strong multilingual capabilities.

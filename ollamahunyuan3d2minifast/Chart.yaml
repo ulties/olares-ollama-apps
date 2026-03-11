@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 'hf.co/tencent/Hunyuan3D-2mini:hunyuan3d-dit-v2-mini-fast'
+description: Helm chart for Hunyuan3D-2mini fast 3D generation model serving with Ollama
+name: ollamahunyuan3d2minifast
+type: application
+version: '1.0.0'
