@@ -1,0 +1,106 @@
+---
+olaresManifest.version: '0.10.0'
+olaresManifest.type: app
+metadata:
+  name: ollamaqwen3vl30ba3bfp8
+  icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
+  description: Qwen3-VL 30B A3B Instruct FP8 served via Ollama — Alibaba's vision-language MoE model with 30 billion total parameters, 3 billion active, and FP8 quantization.
+  appid: ollamaqwen3vl30ba3bfp8
+  title: Qwen3-VL 30B A3B Instruct FP8 (Ollama)
+  version: '1.0.0'
+  categories:
+    - AI
+entrances:
+  - name: ollamaclient
+    port: 8080
+    host: ollamaclient
+    title: Qwen3-VL 30B A3B Instruct FP8
+    icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
+    openMethod: window
+    authLevel: internal
+spec:
+  versionName: 'qwen3-vl:30b-a3b-instruct-fp8'
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Qwen3-VL 30B A3B Instruct FP8 is a vision-language mixture-of-experts model from Alibaba's Qwen3 series, served via Ollama. This is the 30-billion-parameter MoE variant with only 3 billion active parameters per token, combined with FP8 (8-bit floating point) quantization, delivering flagship-class visual understanding with efficient GPU memory usage.
+
+    Model tag: qwen3-vl:30b-a3b-instruct-fp8
+    Quantization: FP8 (8-bit floating point)
+    Parameters: 30 billion total / 3 billion active (MoE)
+    Serving framework: Ollama
+
+    Key features:
+    State-of-the-art image understanding and visual question answering across diverse image types including natural photos, charts, diagrams, documents, and complex scenes.
+
+    High-accuracy OCR and document understanding enabling extraction and analysis of text from scanned documents, invoices, forms, handwritten notes, and multi-page PDFs.
+
+    Multi-turn visual conversations allowing in-depth discussion and reasoning about image content across extended dialogue turns.
+
+    Seamless integration through OpenAI-compatible API endpoint supporting both vision and text requests, making it a drop-in replacement for cloud-based vision-language APIs.
+
+    Advanced instruction-following for image captioning, visual reasoning, scene description, visual grounding, and complex multi-step visual analysis tasks.
+
+    Built on Qwen3 architecture with unique support for thinking mode (for complex visual reasoning problems) and non-thinking mode (for fast visual Q&A).
+
+    Mixture-of-Experts (MoE) design activates only 3B parameters per forward pass, enabling faster inference and lower VRAM usage compared to a dense 30B model while retaining the full visual understanding capacity of all 30B parameters.
+
+  developer: Alibaba
+  website: https://qwen.ai/home
+  submitter: Olares
+  locale:
+    - en-US
+  license:
+    - text: Apache-2.0
+      url: https://ollama.com/library/qwen3-vl
+
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  limitedCpu: 6200m
+  requiredCpu: 150m
+  requiredDisk: 50Mi
+  limitedDisk: 500Gi
+  limitedMemory: 40Gi
+  requiredMemory: 4200Mi
+  requiredGpu: 1Gi
+  limitedGpu: 24Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
+
+  supportArch:
+    - amd64
+    - arm64
+
+permission:
+  appData: true
+  appCache: true
+  userData:
+    - Home/Ollama
+options:
+  apiTimeout: 0
+  appScope:
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - ollamaqwen3vl30ba3bfp8
+  {{- else }}
+    clusterScoped: false
+  {{- end }}
+  dependencies:
+    - name: olares
+      version: '>=1.12.2-0'
+      type: system
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  {{- else }}
+    - name: ollamaqwen3vl30ba3bfp8
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+  {{- end }}
