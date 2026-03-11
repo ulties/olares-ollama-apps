@@ -1,5 +1,5 @@
 metadata:
-  title: Qwen3-VL 8B Instruct FP8 (Ollama)
+  title: Qwen3-VL 8B FP8 (Ollama)
   description: Qwen3-VL 8B Instruct FP8 served via Ollama — Alibaba's vision-language model with 8 billion parameters and FP8 quantization.
 
 spec:

@@ -1,5 +1,5 @@
 metadata:
-  title: Qwen3-Coder 32B Q4_K_M (Ollama)
+  title: Qwen3-Coder 32B Q4KM (Ollama)
   description: Qwen3-Coder 32B Q4_K_M served via Ollama — Alibaba's coding-focused LLM with 32 billion parameters and 4-bit Q4_K_M quantization.
 
 spec:

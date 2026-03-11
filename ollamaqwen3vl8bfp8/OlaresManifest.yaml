@@ -6,7 +6,7 @@ metadata:
   icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
   description: Qwen3-VL 8B Instruct FP8 served via Ollama — Alibaba's vision-language model with 8 billion parameters and FP8 quantization.
   appid: ollamaqwen3vl8bfp8
-  title: Qwen3-VL 8B Instruct FP8 (Ollama)
+  title: Qwen3-VL 8B FP8 (Ollama)
   version: '1.0.0'
   categories:
     - AI
@@ -14,7 +14,7 @@ entrances:
   - name: ollamaclient
     port: 8080
     host: ollamaclient
-    title: Qwen3-VL 8B Instruct FP8
+    title: Qwen3-VL 8B FP8
     icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
     openMethod: window
     authLevel: internal

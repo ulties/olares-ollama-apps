@@ -14,7 +14,7 @@ entrances:
   - name: ollamaclient
     port: 8080
     host: ollamaclient
-    title: Kokoro 82M v1.0 ONNX
+    title: Kokoro 82M v1 ONNX
     icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/kokoro.png
     openMethod: window
     authLevel: internal

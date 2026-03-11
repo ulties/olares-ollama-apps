@@ -14,7 +14,7 @@ entrances:
   - name: ollamaclient
     port: 8080
     host: ollamaclient
-    title: FLUX.2 Klein 9B
+    title: FLUX2 Klein 9B
     icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/flux.png
     openMethod: window
     authLevel: internal

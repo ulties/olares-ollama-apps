@@ -14,7 +14,7 @@ entrances:
   - name: ollamaclient
     port: 8080
     host: ollamaclient
-    title: Wan2.1 T2V 1.3B
+    title: Wan21 T2V 1-3B
     icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/wan.png
     openMethod: window
     authLevel: internal

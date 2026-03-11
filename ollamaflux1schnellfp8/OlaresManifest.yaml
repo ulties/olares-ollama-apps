@@ -14,7 +14,7 @@ entrances:
   - name: ollamaclient
     port: 8080
     host: ollamaclient
-    title: FLUX.1 schnell FP8
+    title: FLUX1 schnell FP8
     icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/flux.png
     openMethod: window
     authLevel: internal
