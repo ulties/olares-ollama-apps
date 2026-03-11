@@ -1,0 +1,99 @@
+---
+olaresManifest.version: '0.10.0'
+olaresManifest.type: app
+metadata:
+  name: ollamaqwen306bq4kmcpu
+  icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
+  description: Qwen3 0.6B Q4_K_M served via Ollama — Alibaba's smallest Qwen3 LLM with 0.6 billion parameters and 4-bit Q4_K_M quantization, optimized for CPU.
+  appid: ollamaqwen306bq4kmcpu
+  title: Qwen3 0.6B Q4_K_M CPU (Ollama)
+  version: '1.0.0'
+  categories:
+    - AI
+entrances:
+  - name: ollamaclient
+    port: 8080
+    host: ollamaclient
+    title: Qwen3 0.6B Q4_K_M CPU
+    icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
+    openMethod: window
+    authLevel: internal
+spec:
+  versionName: 'qwen3:0.6b-q4_K_M'
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Qwen3 0.6B Q4_K_M is the smallest model in Alibaba's Qwen3 series, served via Ollama. This 0.6-billion-parameter variant with Q4_K_M (4-bit, K-quant medium) quantization is ideal for edge devices and applications requiring minimal resource usage, optimized for CPU inference without requiring a GPU.
+
+    Model tag: qwen3:0.6b-q4_K_M
+    Quantization: Q4_K_M (4-bit, medium K-quant)
+    Parameters: 0.6 billion
+    Serving framework: Ollama
+    Hardware target: CPU
+
+    Key features:
+    Ultra-lightweight model designed for scenarios where speed and minimal resource usage are priorities, without requiring a dedicated GPU.
+
+    Supports thinking mode and non-thinking mode inherited from the Qwen3 architecture.
+
+    OpenAI-compatible API endpoint for easy integration with existing workflows and tools.
+
+    Suitable for rapid prototyping, lightweight chatbots, and on-device CPU inference.
+
+  developer: Alibaba
+  website: https://qwen.ai/home
+  submitter: Olares
+  locale:
+    - en-US
+  license:
+    - text: Apache-2.0
+      url: https://ollama.com/library/qwen3
+
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  limitedCpu: 3500m
+  requiredCpu: 100m
+  requiredDisk: 50Mi
+  limitedDisk: 20Gi
+  limitedMemory: 4Gi
+  requiredMemory: 1Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
+
+  supportArch:
+    - amd64
+    - arm64
+
+permission:
+  appData: true
+  appCache: true
+  userData:
+    - Home/Ollama
+options:
+  apiTimeout: 0
+  appScope:
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - ollamaqwen306bq4kmcpu
+  {{- else }}
+    clusterScoped: false
+  {{- end }}
+  dependencies:
+    - name: olares
+      version: '>=1.12.2-0'
+      type: system
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  {{- else }}
+    - name: ollamaqwen306bq4kmcpu
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+  {{- end }}

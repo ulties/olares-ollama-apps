@@ -1,0 +1,126 @@
+{{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+{{- $ollamaclientDomainENV := split "," .Values.domain.ollamaclient -}}
+{{- $ollamaclientDomain := index $ollamaclientDomainENV "_0" -}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: ollamaqwen317bq4kmcpu
+  name: ollamaqwen317bq4kmcpu
+  namespace: "{{ .Release.Namespace }}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: ollamaqwen317bq4kmcpu
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/chrome-default: "true"
+        io.kompose.service: ollamaqwen317bq4kmcpu
+    spec:
+      containers:
+        - name: ollama
+          image: "docker.io/beclab/ollama-ollama:0.17.5"
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: Etc/UTC
+            - name: OLLAMA_ORIGINS
+              value: "*"
+            - name: OLLAMA_NOPRUNE
+              value: "1"
+          ports:
+            - containerPort: 11434
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 11434
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 60
+            periodSeconds: 60
+            successThreshold: 1
+            failureThreshold: 10
+          startupProbe:
+            tcpSocket:
+              port: 11434
+            timeoutSeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 30
+          resources:
+            limits:
+              cpu: "4"
+              memory: 6Gi
+            requests:
+              cpu: 100m
+              memory: 3Gi
+          volumeMounts:
+            - mountPath: "/root/.ollama"
+              name: data
+        - name: api
+          image: "docker.io/beclab/harveyff-olares-ollama:v0.1.9"
+          env:
+            - name: PGID
+              value: "1000"
+            - name: PUID
+              value: "1000"
+            - name: TZ
+              value: Etc/UTC
+            - name: DISPLAY
+              value: ":0"
+            - name: OLLAMA_MODEL
+              value: "qwen3:1.7b-q4_K_M"
+            - name: OLLAMA_URL
+              value: "http://localhost:11434"
+            - name: APP_URL
+              value: "https://{{ $ollamaclientDomain }}"
+            - name: OLLAMA_NOPRUNE
+              value: "1"
+          resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            limits:
+              cpu: 300m
+              memory: 512Mi
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+      volumes:
+        - name: data
+          hostPath:
+            path: "{{ .Values.userspace.userData }}/Ollama/{{ .Release.Name }}"
+            type: DirectoryOrCreate
+      restartPolicy: Always
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: api
+  name: api
+  namespace: "{{ .Release.Namespace }}"
+spec:
+  ports:
+    - name: "api"
+      port: 8081
+      targetPort: 8080
+  selector:
+    io.kompose.service: ollamaqwen317bq4kmcpu
+status:
+  loadBalancer: {}
+  {{- end }}
