@@ -53,10 +53,10 @@ spec:
 
   {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
   limitedCpu: 4000m
-  requiredCpu: 100m
+  requiredCpu: 360m
   requiredDisk: 50Mi
   limitedDisk: 20Gi
-  limitedMemory: 4Gi
+  limitedMemory: 4596Mi
   requiredMemory: 2Gi
   requiredGpu: 1Gi
   limitedGpu: 4Gi
