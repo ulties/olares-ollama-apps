@@ -2,10 +2,10 @@
 olaresManifest.version: '0.10.0'
 olaresManifest.type: app
 metadata:
-  name: ollamaqwen3coder32b
+  name: ollamaqwen3coder32bq4km
   icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
   description: Qwen3-Coder is Alibaba's powerful coding-focused large language model optimized for code generation, debugging, and software development tasks.
-  appid: ollamaqwen3coder32b
+  appid: ollamaqwen3coder32bq4km
   title: Qwen3 Coder 32B (Ollama)
   version: '1.0.0'
   categories:
@@ -82,7 +82,7 @@ options:
   {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
     clusterScoped: true
     appRef:
-      - ollamaqwen3coder32b
+      - ollamaqwen3coder32bq4km
   {{- else }}
     clusterScoped: false
   {{- end }}
@@ -92,7 +92,7 @@ options:
       type: system
   {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
   {{- else }}
-    - name: ollamaqwen3coder32b
+    - name: ollamaqwen3coder32bq4km
       type: application
       version: '>=1.0.0'
       mandatory: true

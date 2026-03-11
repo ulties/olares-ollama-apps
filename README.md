@@ -6,7 +6,7 @@ Two serving variants are provided:
 
 ---
 
-## App: `vllmqwen3coder32binstruct4bit` (vLLM)
+## App: `vllmqwen3coder32binstructawq` (vLLM)
 
 | Property | Value |
 |----------|-------|
@@ -27,7 +27,7 @@ Two serving variants are provided:
 
 ---
 
-## App: `ollamaqwen3coder32b` (Ollama)
+## App: `ollamaqwen3coder32bq4km` (Ollama)
 
 | Property | Value |
 |----------|-------|
