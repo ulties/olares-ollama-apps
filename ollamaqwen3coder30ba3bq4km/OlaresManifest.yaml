@@ -1,0 +1,106 @@
+---
+olaresManifest.version: '0.10.0'
+olaresManifest.type: app
+metadata:
+  name: ollamaqwen3coder30ba3bq4km
+  icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
+  description: Qwen3-Coder 30B A3B Instruct Q4_K_M served via Ollama — Alibaba's coding-focused MoE LLM with 30 billion total parameters, 3 billion active, and 4-bit Q4_K_M quantization.
+  appid: ollamaqwen3coder30ba3bq4km
+  title: Qwen3-Coder 30B A3B Instruct Q4_K_M (Ollama)
+  version: '1.0.0'
+  categories:
+    - AI
+entrances:
+  - name: ollamaclient
+    port: 8080
+    host: ollamaclient
+    title: Qwen3-Coder 30B A3B Instruct Q4_K_M
+    icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
+    openMethod: window
+    authLevel: internal
+spec:
+  versionName: 'qwen3-coder:30b-a3b-instruct-q4_K_M'
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Qwen3-Coder 30B A3B Instruct Q4_K_M is a coding-focused mixture-of-experts large language model from Alibaba's Qwen3 series, served via Ollama. This is the 30-billion-parameter MoE variant with only 3 billion active parameters per token, combined with Q4_K_M (4-bit, K-quant medium) quantization, delivering an exceptional balance of model quality and GPU memory efficiency — purpose-built for a 24 GB VRAM GPU.
+
+    Model tag: qwen3-coder:30b-a3b-instruct-q4_K_M
+    Quantization: Q4_K_M (4-bit, medium K-quant)
+    Parameters: 30 billion total / 3 billion active (MoE)
+    Serving framework: Ollama
+
+    Key features:
+    State-of-the-art code generation and completion across 40+ programming languages including Python, JavaScript, TypeScript, Java, C++, Go, Rust, and more.
+
+    Advanced code reasoning capabilities for complex algorithm implementation, debugging, and code review with detailed explanations.
+
+    Support for long context windows enabling analysis of large codebases, multi-file editing, and repository-level understanding.
+
+    Seamless integration with development workflows through OpenAI-compatible API endpoint, making it a drop-in replacement for cloud-based coding assistants.
+
+    Enhanced instruction-following for precise code generation from natural language descriptions, test generation, and documentation writing.
+
+    Built on Qwen3 architecture with unique support for thinking mode (for complex coding problems) and non-thinking mode (for fast code completion).
+
+    Mixture-of-Experts (MoE) design activates only 3B parameters per forward pass, enabling faster inference and lower VRAM usage compared to a dense 30B model while retaining the full knowledge capacity of all 30B parameters.
+
+  developer: Alibaba
+  website: https://qwen.ai/home
+  submitter: Olares
+  locale:
+    - en-US
+  license:
+    - text: Apache-2.0
+      url: https://ollama.com/library/qwen3-coder
+
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  limitedCpu: 6200m
+  requiredCpu: 150m
+  requiredDisk: 50Mi
+  limitedDisk: 500Gi
+  limitedMemory: 40Gi
+  requiredMemory: 4200Mi
+  requiredGpu: 1Gi
+  limitedGpu: 24Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
+
+  supportArch:
+    - amd64
+    - arm64
+
+permission:
+  appData: true
+  appCache: true
+  userData:
+    - Home/Ollama
+options:
+  apiTimeout: 0
+  appScope:
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - ollamaqwen3coder30ba3bq4km
+  {{- else }}
+    clusterScoped: false
+  {{- end }}
+  dependencies:
+    - name: olares
+      version: '>=1.12.2-0'
+      type: system
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  {{- else }}
+    - name: ollamaqwen3coder30ba3bq4km
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+  {{- end }}
