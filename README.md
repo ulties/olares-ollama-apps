@@ -38,7 +38,7 @@ The deployment uses the `applications.app.bytetrade.io/gpu-inject: "true"` annot
 
 ### Request Flow
 
-```
+```text
 User request
     → nginx (port 8080)               # ollamaclient Service
         → Ollama API sidecar (8081)   # harveyff-olares-ollama
@@ -47,7 +47,7 @@ User request
 
 For reference (non-admin) users the nginx proxy forwards to the admin's namespace:
 
-```
+```text
 http://api.<release-name>-<admin-username>:8081
 ```
 
@@ -57,7 +57,7 @@ http://api.<release-name>-<admin-username>:8081
 
 Each app follows the standard Olares Helm chart structure, modelled after the Ollama apps in [beclab/apps](https://github.com/beclab/apps):
 
-```
+```text
 <appname>/
 ├── Chart.yaml                       # Helm chart metadata (name, appVersion = model tag)
 ├── OlaresManifest.yaml              # Olares app manifest (resources, permissions, entrances)
