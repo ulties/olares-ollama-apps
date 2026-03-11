@@ -43,7 +43,7 @@ spec:
 
     Instruction-following for image captioning, visual reasoning, and scene description tasks.
 
-    Built on Qwen3 architecture delivering capable vision-language performance in an extremely lightweight 2B parameter package, ideal for edge deployments and CPU-accessible use cases.
+    Built on Qwen3 architecture delivering capable vision-language performance in an extremely lightweight 2B parameter package, ideal for edge deployments and low-VRAM GPU environments (requires 4Gi GPU).
 
   developer: Alibaba
   website: https://qwen.ai/home
