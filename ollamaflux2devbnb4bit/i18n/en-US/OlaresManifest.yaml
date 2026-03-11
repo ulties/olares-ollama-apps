@@ -1,0 +1,28 @@
+metadata:
+  title: FLUX.2 Dev BnB 4-bit (Ollama)
+  description: FLUX.2 Dev BnB 4-bit served via Ollama — Black Forest Labs' FLUX.2 Dev model with bitsandbytes 4-bit quantization for efficient high-quality image generation.
+
+spec:
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    FLUX.2 Dev BnB 4-bit is the developer variant of the FLUX.2 image generation model from Black Forest Labs, quantized to 4-bit precision using bitsandbytes (BnB), served via Ollama. The BnB 4-bit quantization dramatically reduces GPU memory requirements while preserving the high image quality of the full FLUX.2 Dev model.
+
+    Model tag: hf.co/black-forest-labs/FLUX.2-dev-bnb-4bit
+    Quantization: BnB 4-bit (bitsandbytes)
+    Serving framework: Ollama
+
+    Key features:
+    High-quality text-to-image generation with bitsandbytes 4-bit quantization, enabling the FLUX.2 Dev model to run on GPUs with limited VRAM.
+
+    Developer-focused variant with guidance distillation for improved prompt adherence and more controllable image generation.
+
+    Advanced diffusion-based image synthesis supporting a wide range of artistic styles, photographic realism, and creative compositions.
+
+    Seamless integration through OpenAI-compatible image generation API endpoint, making it easy to use with existing tooling and workflows.
+
+    Bitsandbytes (BnB) 4-bit quantization provides an excellent balance between memory efficiency and image generation quality, enabling deployment on consumer-grade GPUs.
+
+    Built on Black Forest Labs' next-generation FLUX.2 architecture, succeeding FLUX.1 with improved quality, speed, and prompt understanding.

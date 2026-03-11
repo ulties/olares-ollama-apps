@@ -1,0 +1,103 @@
+---
+olaresManifest.version: '0.10.0'
+olaresManifest.type: app
+metadata:
+  name: ollamaflux2klein4b
+  icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/flux.png
+  description: FLUX.2 Klein 4B served via Ollama — Black Forest Labs' compact text-to-image diffusion model with 4 billion parameters for fast, high-quality image generation.
+  appid: ollamaflux2klein4b
+  title: FLUX.2 Klein 4B (Ollama)
+  version: '1.0.0'
+  categories:
+    - AI
+entrances:
+  - name: ollamaclient
+    port: 8080
+    host: ollamaclient
+    title: FLUX.2 Klein 4B
+    icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/flux.png
+    openMethod: window
+    authLevel: internal
+spec:
+  versionName: 'hf.co/black-forest-labs/FLUX.2-klein-4B'
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    FLUX.2 Klein 4B is a compact text-to-image diffusion model from Black Forest Labs, served via Ollama. This is the 4-billion-parameter Klein variant, designed for fast and efficient high-quality image generation with a lower memory footprint compared to larger FLUX.2 models.
+
+    Model tag: hf.co/black-forest-labs/FLUX.2-klein-4B
+    Parameters: 4 billion
+    Serving framework: Ollama
+
+    Key features:
+    High-quality text-to-image generation from natural language descriptions with exceptional prompt adherence and photorealistic output.
+
+    Compact and efficient architecture with 4 billion parameters, enabling fast inference on consumer-grade GPUs with reduced VRAM requirements.
+
+    Advanced diffusion-based image synthesis supporting diverse artistic styles, photographic realism, and creative compositions.
+
+    Seamless integration through OpenAI-compatible image generation API endpoint, making it easy to use with existing tooling and workflows.
+
+    State-of-the-art image quality from the FLUX.2 family, delivering crisp detail, coherent composition, and accurate text rendering.
+
+    Built on Black Forest Labs' next-generation FLUX.2 architecture, succeeding FLUX.1 with improved quality, speed, and prompt understanding.
+
+  developer: Black Forest Labs
+  website: https://blackforestlabs.ai
+  submitter: Olares
+  locale:
+    - en-US
+  license:
+    - text: FLUX.2 Community License
+      url: https://huggingface.co/black-forest-labs/FLUX.2-klein-4B
+
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  limitedCpu: 6200m
+  requiredCpu: 150m
+  requiredDisk: 50Mi
+  limitedDisk: 500Gi
+  limitedMemory: 20Gi
+  requiredMemory: 4200Mi
+  requiredGpu: 1Gi
+  limitedGpu: 12Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
+
+  supportArch:
+    - amd64
+    - arm64
+
+permission:
+  appData: true
+  appCache: true
+  userData:
+    - Home/Ollama
+options:
+  apiTimeout: 0
+  appScope:
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - ollamaflux2klein4b
+  {{- else }}
+    clusterScoped: false
+  {{- end }}
+  dependencies:
+    - name: olares
+      version: '>=1.12.2-0'
+      type: system
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  {{- else }}
+    - name: ollamaflux2klein4b
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+  {{- end }}

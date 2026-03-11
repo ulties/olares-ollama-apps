@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 'hf.co/black-forest-labs/FLUX.2-dev-bnb-4bit'
+description: Helm chart for FLUX.2 Dev BnB 4-bit image generation model serving with Ollama
+name: ollamaflux2devbnb4bit
+type: application
+version: '1.0.0'
