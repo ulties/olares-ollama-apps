@@ -1,0 +1,101 @@
+---
+olaresManifest.version: '0.10.0'
+olaresManifest.type: app
+metadata:
+  name: ollamakokoro82mv10
+  icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/kokoro.png
+  description: Kokoro-82M-v1.0-ONNX text-to-speech model from onnx-community served via Ollama — a lightweight 82M parameter TTS model with natural-sounding synthesis.
+  appid: ollamakokoro82mv10
+  title: Kokoro 82M v1.0 ONNX (Ollama)
+  version: '1.0.0'
+  categories:
+    - AI
+entrances:
+  - name: ollamaclient
+    port: 8080
+    host: ollamaclient
+    title: Kokoro 82M v1.0 ONNX
+    icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/kokoro.png
+    openMethod: window
+    authLevel: internal
+spec:
+  versionName: 'hf.co/onnx-community/Kokoro-82M-v1.0-ONNX'
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Kokoro-82M-v1.0-ONNX is a lightweight text-to-speech model with only 82 million parameters, converted to ONNX format by onnx-community for efficient inference. Served via Ollama, it provides high-quality speech synthesis with minimal resource requirements.
+
+    Model tag: hf.co/onnx-community/Kokoro-82M-v1.0-ONNX
+    Type: Text-to-speech (TTS)
+    Parameters: 82 million
+    Format: ONNX
+    Serving framework: Ollama
+
+    Key features:
+    Compact 82M parameter TTS model delivering natural-sounding speech synthesis.
+
+    ONNX format enables fast, cross-platform inference with hardware acceleration.
+
+    Multiple voice styles and speaking speeds supported.
+
+    Low VRAM footprint makes it ideal for sharing GPU resources across multiple services.
+
+  developer: hexgrad / onnx-community
+  website: https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX
+  submitter: Olares
+  locale:
+    - en-US
+  license:
+    - text: Apache-2.0
+      url: https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX
+
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  limitedCpu: 4000m
+  requiredCpu: 100m
+  requiredDisk: 50Mi
+  limitedDisk: 20Gi
+  limitedMemory: 4Gi
+  requiredMemory: 2Gi
+  requiredGpu: 1Gi
+  limitedGpu: 4Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
+
+  supportArch:
+    - amd64
+    - arm64
+
+permission:
+  appData: true
+  appCache: true
+  userData:
+    - Home/Ollama
+options:
+  apiTimeout: 0
+  appScope:
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - ollamakokoro82mv10
+  {{- else }}
+    clusterScoped: false
+  {{- end }}
+  dependencies:
+    - name: olares
+      version: '>=1.12.2-0'
+      type: system
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  {{- else }}
+    - name: ollamakokoro82mv10
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+  {{- end }}

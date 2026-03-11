@@ -1,0 +1,100 @@
+---
+olaresManifest.version: '0.10.0'
+olaresManifest.type: app
+metadata:
+  name: ollamawan21t2v13b
+  icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/wan.png
+  description: Wan2.1-T2V-1.3B text-to-video model from Wan-AI served via Ollama — a 1.3B parameter text-to-video generation model for creating short video clips from text prompts.
+  appid: ollamawan21t2v13b
+  title: Wan2.1 T2V 1.3B (Ollama)
+  version: '1.0.0'
+  categories:
+    - AI
+entrances:
+  - name: ollamaclient
+    port: 8080
+    host: ollamaclient
+    title: Wan2.1 T2V 1.3B
+    icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/wan.png
+    openMethod: window
+    authLevel: internal
+spec:
+  versionName: 'hf.co/Wan-AI/Wan2.1-T2V-1.3B'
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Wan2.1-T2V-1.3B is a text-to-video generation model from Wan-AI with 1.3 billion parameters, served via Ollama. It generates short video clips from natural language text prompts using diffusion-based video synthesis.
+
+    Model tag: hf.co/Wan-AI/Wan2.1-T2V-1.3B
+    Type: Text-to-video generation
+    Parameters: 1.3 billion
+    Serving framework: Ollama
+
+    Key features:
+    Generates short, high-quality video clips from text descriptions.
+
+    Compact 1.3B parameter model balances video quality with reasonable VRAM requirements.
+
+    Supports diverse video content generation including dynamic scenes and motion sequences.
+
+    OpenAI-compatible video generation API for integration with media production workflows.
+
+  developer: Wan-AI
+  website: https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B
+  submitter: Olares
+  locale:
+    - en-US
+  license:
+    - text: Apache-2.0
+      url: https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B
+
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  limitedCpu: 6200m
+  requiredCpu: 150m
+  requiredDisk: 50Mi
+  limitedDisk: 100Gi
+  limitedMemory: 20Gi
+  requiredMemory: 8Gi
+  requiredGpu: 1Gi
+  limitedGpu: 24Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
+
+  supportArch:
+    - amd64
+    - arm64
+
+permission:
+  appData: true
+  appCache: true
+  userData:
+    - Home/Ollama
+options:
+  apiTimeout: 0
+  appScope:
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - ollamawan21t2v13b
+  {{- else }}
+    clusterScoped: false
+  {{- end }}
+  dependencies:
+    - name: olares
+      version: '>=1.12.2-0'
+      type: system
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  {{- else }}
+    - name: ollamawan21t2v13b
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+  {{- end }}

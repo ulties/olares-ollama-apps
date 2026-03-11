@@ -1,0 +1,100 @@
+---
+olaresManifest.version: '0.10.0'
+olaresManifest.type: app
+metadata:
+  name: ollamahunyuan3d2minifast
+  icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/hunyuan3d.png
+  description: Hunyuan3D-2mini fast 3D generation model from Tencent served via Ollama — hunyuan3d-dit-v2-mini-fast for rapid text-to-3D and image-to-3D generation.
+  appid: ollamahunyuan3d2minifast
+  title: Hunyuan3D-2mini fast (Ollama)
+  version: '1.0.0'
+  categories:
+    - AI
+entrances:
+  - name: ollamaclient
+    port: 8080
+    host: ollamaclient
+    title: Hunyuan3D-2mini fast
+    icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/hunyuan3d.png
+    openMethod: window
+    authLevel: internal
+spec:
+  versionName: 'hf.co/tencent/Hunyuan3D-2mini:hunyuan3d-dit-v2-mini-fast'
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Hunyuan3D-2mini fast (hunyuan3d-dit-v2-mini-fast) is a compact, speed-optimized 3D generation model from Tencent, served via Ollama. It enables fast generation of 3D assets from text prompts or reference images using a diffusion transformer architecture.
+
+    Model tag: hf.co/tencent/Hunyuan3D-2mini:hunyuan3d-dit-v2-mini-fast
+    Type: Text/image-to-3D generation
+    Architecture: Diffusion transformer (DiT)
+    Serving framework: Ollama
+
+    Key features:
+    Generates high-quality 3D meshes from text descriptions or image inputs.
+
+    Mini variant optimized for speed without sacrificing geometry quality.
+
+    Fast mode (v2-mini-fast) provides accelerated inference for interactive 3D generation workflows.
+
+    Produces textured 3D assets suitable for use in games, VR, and product visualization.
+
+  developer: Tencent
+  website: https://huggingface.co/tencent/Hunyuan3D-2mini
+  submitter: Olares
+  locale:
+    - en-US
+  license:
+    - text: Tencent Hunyuan Community License
+      url: https://huggingface.co/tencent/Hunyuan3D-2mini
+
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  limitedCpu: 6200m
+  requiredCpu: 150m
+  requiredDisk: 50Mi
+  limitedDisk: 100Gi
+  limitedMemory: 16Gi
+  requiredMemory: 8Gi
+  requiredGpu: 1Gi
+  limitedGpu: 16Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
+
+  supportArch:
+    - amd64
+    - arm64
+
+permission:
+  appData: true
+  appCache: true
+  userData:
+    - Home/Ollama
+options:
+  apiTimeout: 0
+  appScope:
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - ollamahunyuan3d2minifast
+  {{- else }}
+    clusterScoped: false
+  {{- end }}
+  dependencies:
+    - name: olares
+      version: '>=1.12.2-0'
+      type: system
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  {{- else }}
+    - name: ollamahunyuan3d2minifast
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+  {{- end }}

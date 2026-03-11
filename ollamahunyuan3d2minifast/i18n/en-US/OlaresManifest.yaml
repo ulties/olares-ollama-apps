@@ -1,0 +1,25 @@
+metadata:
+  title: Hunyuan3D-2mini fast (Ollama)
+  description: Hunyuan3D-2mini fast 3D generation model from Tencent served via Ollama — hunyuan3d-dit-v2-mini-fast for rapid text-to-3D and image-to-3D generation.
+
+spec:
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Hunyuan3D-2mini fast (hunyuan3d-dit-v2-mini-fast) is a compact, speed-optimized 3D generation model from Tencent, served via Ollama. It enables fast generation of 3D assets from text prompts or reference images using a diffusion transformer architecture.
+
+    Model tag: hf.co/tencent/Hunyuan3D-2mini:hunyuan3d-dit-v2-mini-fast
+    Type: Text/image-to-3D generation
+    Architecture: Diffusion transformer (DiT)
+    Serving framework: Ollama
+
+    Key features:
+    Generates high-quality 3D meshes from text descriptions or image inputs.
+
+    Mini variant optimized for speed without sacrificing geometry quality.
+
+    Fast mode (v2-mini-fast) provides accelerated inference for interactive 3D generation workflows.
+
+    Produces textured 3D assets suitable for use in games, VR, and product visualization.

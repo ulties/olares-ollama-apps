@@ -1,0 +1,25 @@
+metadata:
+  title: Wan2.1 T2V 1.3B (Ollama)
+  description: Wan2.1-T2V-1.3B text-to-video model from Wan-AI served via Ollama — a 1.3B parameter text-to-video generation model for creating short video clips from text prompts.
+
+spec:
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Wan2.1-T2V-1.3B is a text-to-video generation model from Wan-AI with 1.3 billion parameters, served via Ollama. It generates short video clips from natural language text prompts using diffusion-based video synthesis.
+
+    Model tag: hf.co/Wan-AI/Wan2.1-T2V-1.3B
+    Type: Text-to-video generation
+    Parameters: 1.3 billion
+    Serving framework: Ollama
+
+    Key features:
+    Generates short, high-quality video clips from text descriptions.
+
+    Compact 1.3B parameter model balances video quality with reasonable VRAM requirements.
+
+    Supports diverse video content generation including dynamic scenes and motion sequences.
+
+    OpenAI-compatible video generation API for integration with media production workflows.

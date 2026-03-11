@@ -1,0 +1,25 @@
+metadata:
+  title: FLUX.1 schnell FP8 (Ollama)
+  description: FLUX.1 schnell FP8 image generation model from Kijai/flux-fp8 served via Ollama — Black Forest Labs' fast text-to-image diffusion model in FP8 precision.
+
+spec:
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    FLUX.1 schnell FP8 is a high-speed text-to-image diffusion model from Black Forest Labs, quantized to FP8 (e4m3fn) precision by Kijai. Served via Ollama using the HuggingFace model hub integration.
+
+    Model tag: hf.co/Kijai/flux-fp8:flux1-schnell-fp8-e4m3fn.safetensors
+    Quantization: FP8 (e4m3fn)
+    Type: Text-to-image diffusion model
+    Serving framework: Ollama
+
+    Key features:
+    State-of-the-art text-to-image generation with the FLUX.1 schnell architecture optimized for speed.
+
+    FP8 quantization reduces VRAM requirements while maintaining high image quality compared to the full precision model.
+
+    Fast inference suitable for interactive image generation workflows.
+
+    Seamless integration through Ollama's OpenAI-compatible image generation API.

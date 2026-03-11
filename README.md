@@ -9,6 +9,14 @@ This repository contains Olares app configurations for models served via **Ollam
 | App folder | Model | Quantization |
 |------------|-------|--------------|
 | [`ollamaqwen3coder32bq4km`](./ollamaqwen3coder32bq4km) | `qwen3-coder:32b-q4_K_M` | Q4_K_M |
+| [`ollamaqwen3coder30ba3bq4km`](./ollamaqwen3coder30ba3bq4km) | `qwen3-coder:30b-a3b-instruct-q4_K_M` | Q4_K_M |
+| [`ollamaqwen317bq4km`](./ollamaqwen317bq4km) | `qwen3:1.7b-q4_K_M` | Q4_K_M |
+| [`ollamaqwen306bq4km`](./ollamaqwen306bq4km) | `qwen3:0.6b-q4_K_M` | Q4_K_M |
+| [`ollamaflux1schnellfp8`](./ollamaflux1schnellfp8) | `hf.co/Kijai/flux-fp8:flux1-schnell-fp8-e4m3fn.safetensors` | FP8 |
+| [`ollamafasterwhisperlargev3turbo`](./ollamafasterwhisperlargev3turbo) | `hf.co/dropbox-dash/faster-whisper-large-v3-turbo` | — |
+| [`ollamakokoro82mv10`](./ollamakokoro82mv10) | `hf.co/onnx-community/Kokoro-82M-v1.0-ONNX` | ONNX |
+| [`ollamawan21t2v13b`](./ollamawan21t2v13b) | `hf.co/Wan-AI/Wan2.1-T2V-1.3B` | — |
+| [`ollamahunyuan3d2minifast`](./ollamahunyuan3d2minifast) | `hf.co/tencent/Hunyuan3D-2mini:hunyuan3d-dit-v2-mini-fast` | — |
 
 ---
 
