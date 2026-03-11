@@ -1,6 +1,6 @@
 # Olares Qwen3-Coder (Ollama)
 
-This repository contains Olares app configurations for **Qwen3-Coder** served via **Ollama** — a powerful coding-focused large language model from Alibaba, optimized for GPU inference on 24GB VRAM.
+This repository contains Olares app configurations for **Qwen3-Coder** served via **Ollama** — a powerful coding-focused large language model from Alibaba, optimized for GPU inference.
 
 ---
 
@@ -137,7 +137,7 @@ Deployed for **all users** (admin and reference). Contains:
 ## Prerequisites
 
 - Olares ≥ 1.12.2
-- A GPU node with ≥ 1GB VRAM (24GB VRAM recommended for full 32B model performance)
+- A GPU node with sufficient VRAM for the model (varies by quantization)
 - ≥ 4.2GB system RAM on the GPU node
 
 ---
