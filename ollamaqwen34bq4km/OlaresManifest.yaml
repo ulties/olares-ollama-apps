@@ -1,0 +1,104 @@
+---
+olaresManifest.version: '0.10.0'
+olaresManifest.type: app
+metadata:
+  name: ollamaqwen34bq4km
+  icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
+  description: Qwen3 4B Q4_K_M served via Ollama — Alibaba's efficient general-purpose LLM with 4 billion parameters and 4-bit Q4_K_M quantization.
+  appid: ollamaqwen34bq4km
+  title: Qwen3 4B Q4_K_M (Ollama)
+  version: '1.0.0'
+  categories:
+    - AI
+entrances:
+  - name: ollamaclient
+    port: 8080
+    host: ollamaclient
+    title: Qwen3 4B Q4_K_M
+    icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
+    openMethod: window
+    authLevel: internal
+spec:
+  versionName: 'qwen3:4b-q4_K_M'
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    Qwen3 4B Q4_K_M is a general-purpose large language model from Alibaba's Qwen3 series, served via Ollama. This is the 4-billion-parameter variant with Q4_K_M (4-bit, K-quant medium) quantization, delivering fast and efficient inference with a minimal memory footprint.
+
+    Model tag: qwen3:4b-q4_K_M
+    Quantization: Q4_K_M (4-bit, medium K-quant)
+    Parameters: 4 billion
+    Serving framework: Ollama
+
+    Key features:
+    Uniquely supports seamless switching between thinking mode (for complex logical reasoning, math, and coding) and non-thinking mode (for efficient, general-purpose dialogue) within a single model, ensuring optimal performance across various scenarios.
+
+    Significantly enhanced reasoning capabilities, surpassing previous QwQ (in thinking mode) and Qwen2.5 instruct models (in non-thinking mode) on mathematics, code generation, and commonsense logical reasoning.
+
+    Superior human preference alignment, excelling in creative writing, role-playing, multi-turn dialogues, and instruction following, to deliver a more natural, engaging, and immersive conversational experience.
+
+    Expertise in agent capabilities, enabling precise integration with external tools in both thinking and non-thinking modes, achieving leading performance among open-source models in complex agent-based tasks.
+
+    Support of 100+ languages and dialects with strong capabilities for multilingual instruction following and translation.
+
+    Built on Qwen3 architecture with Q4_K_M quantization for fast inference on GPU hardware, making it ideal for local deployment and resource-constrained environments.
+
+  developer: Alibaba
+  website: https://qwen.ai/home
+  submitter: Olares
+  locale:
+    - en-US
+  license:
+    - text: Apache-2.0
+      url: https://ollama.com/library/qwen3
+
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  limitedCpu: 6200m
+  requiredCpu: 150m
+  requiredDisk: 50Mi
+  limitedDisk: 500Gi
+  limitedMemory: 40Gi
+  requiredMemory: 4200Mi
+  requiredGpu: 1Gi
+  limitedGpu: 24Gi
+  {{- else }}
+  requiredMemory: 64Mi
+  limitedMemory: 800Mi
+  requiredDisk: 50Mi
+  limitedDisk: 200Mi
+  requiredCpu: 10m
+  limitedCpu: 800m
+  {{- end }}
+
+  supportArch:
+    - amd64
+    - arm64
+
+permission:
+  appData: true
+  appCache: true
+  userData:
+    - Home/Ollama
+options:
+  apiTimeout: 0
+  appScope:
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+    clusterScoped: true
+    appRef:
+      - ollamaqwen34bq4km
+  {{- else }}
+    clusterScoped: false
+  {{- end }}
+  dependencies:
+    - name: olares
+      version: '>=1.12.2-0'
+      type: system
+  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
+  {{- else }}
+    - name: ollamaqwen34bq4km
+      type: application
+      version: '>=1.0.0'
+      mandatory: true
+  {{- end }}
