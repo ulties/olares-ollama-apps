@@ -1,0 +1,28 @@
+metadata:
+  title: FLUX.2 Klein 9B (Ollama)
+  description: FLUX.2 Klein 9B served via Ollama — Black Forest Labs' high-quality text-to-image diffusion model with 9 billion parameters for superior image generation.
+
+spec:
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    FLUX.2 Klein 9B is a high-quality text-to-image diffusion model from Black Forest Labs, served via Ollama. This is the 9-billion-parameter Klein variant, offering superior image quality and more detailed, coherent outputs compared to the 4B model while maintaining competitive inference performance.
+
+    Model tag: hf.co/black-forest-labs/FLUX.2-klein-9B
+    Parameters: 9 billion
+    Serving framework: Ollama
+
+    Key features:
+    Superior text-to-image generation from natural language descriptions with exceptional detail, photorealism, and prompt fidelity.
+
+    9 billion parameter architecture delivering enhanced image quality, finer details, and more coherent compositions versus smaller variants.
+
+    Advanced diffusion-based image synthesis supporting a wide range of artistic styles, photographic realism, and creative concepts.
+
+    Seamless integration through OpenAI-compatible image generation API endpoint, making it easy to use with existing tooling and workflows.
+
+    State-of-the-art image quality from the FLUX.2 family, delivering crisp detail, coherent composition, and accurate text rendering.
+
+    Built on Black Forest Labs' next-generation FLUX.2 architecture, succeeding FLUX.1 with improved quality, speed, and prompt understanding.

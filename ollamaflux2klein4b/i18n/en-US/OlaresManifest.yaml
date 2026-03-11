@@ -1,0 +1,28 @@
+metadata:
+  title: FLUX.2 Klein 4B (Ollama)
+  description: FLUX.2 Klein 4B served via Ollama — Black Forest Labs' compact text-to-image diffusion model with 4 billion parameters for fast, high-quality image generation.
+
+spec:
+  fullDescription: |
+    ## IMPORTANT NOTE ##
+    This is a shared app. Once installed by the Olares Admin, all users in the cluster can use it through reference app.
+
+    ## MODEL OVERVIEW ##
+    FLUX.2 Klein 4B is a compact text-to-image diffusion model from Black Forest Labs, served via Ollama. This is the 4-billion-parameter Klein variant, designed for fast and efficient high-quality image generation with a lower memory footprint compared to larger FLUX.2 models.
+
+    Model tag: hf.co/black-forest-labs/FLUX.2-klein-4B
+    Parameters: 4 billion
+    Serving framework: Ollama
+
+    Key features:
+    High-quality text-to-image generation from natural language descriptions with exceptional prompt adherence and photorealistic output.
+
+    Compact and efficient architecture with 4 billion parameters, enabling fast inference on consumer-grade GPUs with reduced VRAM requirements.
+
+    Advanced diffusion-based image synthesis supporting diverse artistic styles, photographic realism, and creative compositions.
+
+    Seamless integration through OpenAI-compatible image generation API endpoint, making it easy to use with existing tooling and workflows.
+
+    State-of-the-art image quality from the FLUX.2 family, delivering crisp detail, coherent composition, and accurate text rendering.
+
+    Built on Black Forest Labs' next-generation FLUX.2 architecture, succeeding FLUX.1 with improved quality, speed, and prompt understanding.
