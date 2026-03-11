@@ -147,9 +147,11 @@ Deployed for **all users** (admin and reference). Contains:
 To add a new model from the [Ollama Library](https://ollama.com/library):
 
 1. Copy an existing app folder and rename it to reflect the model tag (lowercase, letters and numbers only), e.g. `ollamallama323bq4km`.
-2. Update `Chart.yaml`: set `name` and `appVersion` to the new model tag.
-3. Update `OlaresManifest.yaml`: set `metadata.name`, `metadata.appid`, `spec.versionName`, and all `appRef`/dependency `name` fields to the new app name.
-4. Update `templates/deployment.yaml`: set the `OLLAMA_MODEL` env var to the new model tag and update all `io.kompose.service` labels to the new app name.
+2. Update `Chart.yaml`:
+   - Set `Chart.yaml.name` to the sanitized app slug (e.g. `ollamallama323bq4km`) — this is the chart identifier used throughout Olares.
+   - Set `Chart.yaml.appVersion` to the full Ollama model tag (e.g. `llama3.2:3b-instruct-q4_K_M`) — this is the model string passed to Ollama.
+3. Update `OlaresManifest.yaml`: set `metadata.name`, `metadata.appid`, and `spec.versionName` to the new app slug, and update every `appRef` `name` field and dependency `name` field to the new app slug.
+4. Update `templates/deployment.yaml`: set the `OLLAMA_MODEL` env var to the full model tag (same value as `Chart.yaml.appVersion`) and update all `io.kompose.service` labels to the new app slug.
 5. Update `templates/clientproxy.yaml`: update the cross-namespace proxy URL if the service name changed.
 6. Update `owners` with your GitHub username.
 7. Update `i18n/en-US/OlaresManifest.yaml` with the English title and description for the new model.
