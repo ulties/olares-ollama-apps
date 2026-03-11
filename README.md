@@ -1,6 +1,6 @@
-# Olares Qwen3-Coder (Ollama)
+# Olares Ollama Models
 
-This repository contains Olares app configurations for **Qwen3-Coder** served via **Ollama** — a powerful coding-focused large language model from Alibaba, optimized for GPU inference.
+This repository contains Olares app configurations for models served via **Ollama** — GPU-accelerated inference on your Olares node using the [Ollama](https://ollama.com/) runtime.
 
 ---
 
@@ -20,14 +20,14 @@ Each app uses the Olares **shared app** pattern:
 
 - The **admin** installs the app once. This spins up the Ollama server and model storage on the node.
 - **Other users** install a lightweight reference app (no GPU resources) that proxies requests through to the admin's running instance.
-- This means the 32B model is loaded once on the GPU and shared across all users in the cluster.
+- The model is loaded once on the GPU and shared across all users in the cluster.
 
 ### Model Download
 
 Ollama downloads the model **automatically on first use**. There is no separate download step:
 
 1. On first request, the `harveyff-olares-ollama` API sidecar sends a pull request to the Ollama server (`http://localhost:11434`).
-2. Ollama streams the model from the [Ollama Library](https://ollama.com/library/qwen3-coder) and stores it in the persistent volume at `~/Ollama/<release-name>` (mapped to `/root/.ollama` inside the container).
+2. Ollama streams the model from the [Ollama Library](https://ollama.com/library) and stores it in the persistent volume at `~/Ollama/<release-name>` (mapped to `/root/.ollama` inside the container).
 3. Subsequent requests are served directly from the cached model on disk.
 
 The model directory is a `hostPath` volume so the model survives pod restarts without re-downloading.
@@ -55,7 +55,7 @@ http://api.<release-name>-<admin-username>:8081
 
 ## App Structure
 
-Each app follows the standard Olares Helm chart structure, identical to other Qwen apps in [beclab/apps](https://github.com/beclab/apps):
+Each app follows the standard Olares Helm chart structure, modelled after the Ollama apps in [beclab/apps](https://github.com/beclab/apps):
 
 ```
 <appname>/
@@ -73,7 +73,7 @@ Each app follows the standard Olares Helm chart structure, identical to other Qw
 
 ### `Chart.yaml`
 
-Standard Helm v2 chart. The `appVersion` field holds the full model tag (e.g. `qwen3-coder:32b-q4_K_M`).
+Standard Helm v2 chart. The `appVersion` field holds the full model tag (e.g. `llama3.2:3b-instruct-q4_K_M`).
 
 ### `OlaresManifest.yaml`
 
@@ -138,18 +138,19 @@ Deployed for **all users** (admin and reference). Contains:
 
 - Olares ≥ 1.12.2
 - A GPU node with sufficient VRAM for the model (varies by quantization)
-- ≥ 4.2GB system RAM on the GPU node
+- Sufficient system RAM on the GPU node (varies by model size)
 
 ---
 
 ## Adding a New Ollama App
 
-To add another model (e.g. a different quantization or a different Qwen3-Coder variant):
+To add a new model from the [Ollama Library](https://ollama.com/library):
 
-1. Copy the existing app folder and rename it to match the model tag exactly (lowercase, no special characters except letters and numbers), e.g. `ollamaqwen3coder14bq4km`.
+1. Copy an existing app folder and rename it to reflect the model tag (lowercase, letters and numbers only), e.g. `ollamallama323bq4km`.
 2. Update `Chart.yaml`: set `name` and `appVersion` to the new model tag.
 3. Update `OlaresManifest.yaml`: set `metadata.name`, `metadata.appid`, `spec.versionName`, and all `appRef`/dependency `name` fields to the new app name.
-4. Update `templates/deployment.yaml`: set `OLLAMA_MODEL` env var to the new model tag and update all `io.kompose.service` labels to the new app name.
+4. Update `templates/deployment.yaml`: set the `OLLAMA_MODEL` env var to the new model tag and update all `io.kompose.service` labels to the new app name.
 5. Update `templates/clientproxy.yaml`: update the cross-namespace proxy URL if the service name changed.
 6. Update `owners` with your GitHub username.
-7. Add an entry to `i18n/en-US/OlaresManifest.yaml` with the English title and description.
+7. Update `i18n/en-US/OlaresManifest.yaml` with the English title and description for the new model.
+8. Add a row to the **Apps** table in this README.
