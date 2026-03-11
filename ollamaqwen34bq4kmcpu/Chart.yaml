@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 'qwen3:4b-q4_K_M'
+description: Helm chart for Qwen3 4B Q4_K_M model serving with Ollama (CPU)
+name: ollamaqwen34bq4kmcpu
+type: application
+version: '1.0.0'
