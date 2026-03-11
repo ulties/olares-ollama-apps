@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 'qwen3-coder:32b-q4_K_M'
+description: Helm chart for Qwen3-Coder 32B Q4_K_M model serving with Ollama
+name: ollamaqwen3coder32bq4km
+type: application
+version: '1.0.0'
