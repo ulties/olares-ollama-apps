@@ -51,12 +51,12 @@ spec:
       url: https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B
 
   {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
-  limitedCpu: 6200m
-  requiredCpu: 150m
+  limitedCpu: 7000m
+  requiredCpu: 350m
   requiredDisk: 50Mi
   limitedDisk: 100Gi
   limitedMemory: 20Gi
-  requiredMemory: 8Gi
+  requiredMemory: 8392Mi
   requiredGpu: 1Gi
   limitedGpu: 24Gi
   {{- else }}
