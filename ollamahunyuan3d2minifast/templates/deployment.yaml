@@ -8,7 +8,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: ollamahunyuan3d2minifast
-  name: ollamahunyuan3d2minifast
+  name: {{ .Chart.Name }}-server
   namespace: "{{ .Release.Namespace }}"
   annotations:
     applications.app.bytetrade.io/gpu-inject: "true"

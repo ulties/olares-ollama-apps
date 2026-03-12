@@ -41,11 +41,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: ollamaclient
-  {{- if and .Values.admin .Values.bfl.username (eq .Values.admin .Values.bfl.username) }}
-  name: ollamaclient
-  {{- else }}
-  name: {{ .Release.Name }}
-  {{- end }}
+  name: {{ .Chart.Name }}
   namespace: '{{ .Release.Namespace }}'
 spec:
   replicas: 1
