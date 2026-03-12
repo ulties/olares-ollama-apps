@@ -6,7 +6,7 @@ metadata:
   icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/whisper.png
   description: faster-whisper-large-v3-turbo speech recognition model from dropbox-dash served via Ollama — a turbo-optimized large-v3 Whisper model for fast, accurate speech-to-text transcription.
   appid: ollamafasterwhisperlargev3turbo
-  title: faster-whisper large-v3-turbo (Ollama)
+  title: Faster Whisper Turbo (Ollama)
   version: '1.0.0'
   categories:
     - AI
@@ -14,7 +14,7 @@ entrances:
   - name: ollamaclient
     port: 8080
     host: ollamaclient
-    title: faster-whisper large-v3-turbo
+    title: Faster Whisper Turbo
     icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/whisper.png
     openMethod: window
     authLevel: internal

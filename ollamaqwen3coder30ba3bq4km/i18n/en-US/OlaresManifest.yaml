@@ -1,5 +1,5 @@
 metadata:
-  title: Qwen3-Coder 30B A3B Instruct Q4_K_M (Ollama)
+  title: Qwen3-Coder 30B A3B (Ollama)
   description: Qwen3-Coder 30B A3B Instruct Q4_K_M served via Ollama — Alibaba's coding-focused MoE LLM with 30 billion total parameters, 3 billion active, and 4-bit Q4_K_M quantization.
 
 spec:

@@ -14,7 +14,7 @@ entrances:
   - name: ollamaclient
     port: 8080
     host: ollamaclient
-    title: Qwen3 4B Q4_K_M CPU
+    title: Qwen3 4B Q4KM CPU
     icon: https://app.cdn.olares.com/appstore/llm/ollama/llm/qwen3-14b.png
     openMethod: window
     authLevel: internal

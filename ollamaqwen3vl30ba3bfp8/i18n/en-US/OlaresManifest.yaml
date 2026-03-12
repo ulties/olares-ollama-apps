@@ -1,5 +1,5 @@
 metadata:
-  title: Qwen3-VL 30B A3B Instruct FP8 (Ollama)
+  title: Qwen3-VL 30B A3B FP8 (Ollama)
   description: Qwen3-VL 30B A3B Instruct FP8 served via Ollama — Alibaba's vision-language MoE model with 30 billion total parameters, 3 billion active, and FP8 quantization.
 
 spec:

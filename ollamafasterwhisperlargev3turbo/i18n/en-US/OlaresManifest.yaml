@@ -1,5 +1,5 @@
 metadata:
-  title: faster-whisper large-v3-turbo (Ollama)
+  title: Faster Whisper Turbo (Ollama)
   description: faster-whisper-large-v3-turbo speech recognition model from dropbox-dash served via Ollama — a turbo-optimized large-v3 Whisper model for fast, accurate speech-to-text transcription.
 
 spec:

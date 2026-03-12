@@ -1,5 +1,5 @@
 metadata:
-  title: Qwen3-VL 2B Instruct Q4_K_M (Ollama)
+  title: Qwen3-VL 2B Q4_K_M (Ollama)
   description: Qwen3-VL 2B Instruct Q4_K_M served via Ollama — Alibaba's vision-language model with 2 billion parameters and 4-bit Q4_K_M quantization.
 
 spec:
