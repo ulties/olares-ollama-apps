@@ -8,7 +8,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: ollamafasterwhisperlargev3turbo
-  name: ollamafasterwhisperlargev3turbo
+  name: {{ .Chart.Name }}-server
   namespace: "{{ .Release.Namespace }}"
   annotations:
     applications.app.bytetrade.io/gpu-inject: "true"

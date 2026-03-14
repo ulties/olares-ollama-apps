@@ -8,7 +8,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: ollamaqwen34bq4kmcpu
-  name: ollamaqwen34bq4kmcpu
+  name: {{ .Chart.Name }}-server
   namespace: "{{ .Release.Namespace }}"
 spec:
   replicas: 1

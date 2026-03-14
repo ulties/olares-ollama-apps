@@ -8,7 +8,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: ollamakokoro82mv10
-  name: ollamakokoro82mv10
+  name: {{ .Chart.Name }}-server
   namespace: "{{ .Release.Namespace }}"
   annotations:
     applications.app.bytetrade.io/gpu-inject: "true"

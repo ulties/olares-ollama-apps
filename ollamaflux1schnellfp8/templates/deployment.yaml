@@ -8,7 +8,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: ollamaflux1schnellfp8
-  name: ollamaflux1schnellfp8
+  name: {{ .Chart.Name }}-server
   namespace: "{{ .Release.Namespace }}"
   annotations:
     applications.app.bytetrade.io/gpu-inject: "true"
